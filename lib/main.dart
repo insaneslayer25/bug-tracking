@@ -1,6 +1,4 @@
-import 'package:bug_tracking/pages/login_page.dart';
-import 'package:bug_tracking/core/theme/pallete.dart';
-import 'package:flutter/material.dart';
+import 'package:bug_tracking/app_lib.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'BugT',
       theme: Pallete.lightModeAppTheme.copyWith(
         useMaterial3: true,
         textTheme: const TextTheme(

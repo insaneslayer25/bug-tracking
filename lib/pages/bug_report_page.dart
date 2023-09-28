@@ -1,5 +1,4 @@
-import 'package:bug_tracking/core/theme/pallete.dart';
-import 'package:flutter/material.dart';
+import 'package:bug_tracking/app_lib.dart';
 
 class BugReportingPage extends StatefulWidget {
   final String title;
@@ -23,15 +22,14 @@ class BugReportingPage extends StatefulWidget {
 class _BugReportingPageState extends State<BugReportingPage> {
   @override
   Widget build(BuildContext context) {
-    
     bool isOpen = widget.status == 'open' ? false : true;
-    
+
     OutlineInputBorder border = OutlineInputBorder(
       borderSide:
           const BorderSide(color: Color.fromRGBO(225, 225, 225, 1), width: 4),
       borderRadius: BorderRadius.circular(20),
     );
-    
+
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
@@ -58,48 +56,72 @@ class _BugReportingPageState extends State<BugReportingPage> {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Reported on :',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Card(
+                      color: const Color.fromARGB(255, 100, 165, 255),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          'Reported on ${widget.datetime}',
+                          style: const TextStyle(
+                              color: Pallete.blackColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Report',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      widget.description,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Pallete.blackColor,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Snaps of Bug',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Image.asset(
+                      widget.imagepath,
+                      height: 600,
+                      width: 600,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Text(
-              widget.datetime,
-              style: const TextStyle(fontSize: 16),
-            ),
-            const Spacer(),
-            Text(
-              'Report',
-              textAlign: TextAlign.left,
-              style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(
               height: 10,
             ),
-            Text(
-              widget.description,
-              style: const TextStyle(
-                fontSize: 18,
-                color: Pallete.blackColor,
-              ),
-            ),
-            const Spacer(),
-            Text(
-              'Snaps of Bug',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Image.asset(
-              widget.imagepath,
-              height: 500,
-              width: 500,
-            ),
-            const Spacer(),
             SizedBox(
               width: 350,
               child: TextField(

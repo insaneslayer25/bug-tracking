@@ -43,25 +43,13 @@ class LoginPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton.icon(
+              child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return const HomePage();
                   }));
                 },
-                icon: Image.asset(
-                  Constants.googlepath,
-                  width: 35,
-                ),
-                label: const Text(
-                  'Continue with Google',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Pallete.blackColor,
-                  ),
-                ),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Pallete.blueColor,
                     minimumSize: const Size(
@@ -71,6 +59,14 @@ class LoginPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40),
                     )),
+                child: const Text(
+                  'Login Here',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Pallete.blackColor,
+                  ),
+                ),
               ),
             )
           ],
