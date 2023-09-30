@@ -1,37 +1,42 @@
 import 'package:bug_tracking/app_lib.dart';
+import 'package:flutter/physics.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpState extends State<SignUp> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
+  final TextEditingController _biocontroller = TextEditingController();
+  final TextEditingController _usernamecontroller = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
     _emailcontroller.dispose();
     _passwordcontroller.dispose();
+    _biocontroller.dispose();
+    _usernamecontroller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 40,
-            horizontal: 10,
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 40,
+          horizontal: 10,
+        ),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               const SizedBox(
-                height: 40,
+                height: 10,
               ),
               const Text(
                 'Dive into BugT ',
@@ -43,7 +48,32 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
+              ),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Username',
+                  style: TextStyle(
+                    fontFamily: 'Caveat',
+                    fontSize: 40,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 50,
+                width: 350,
+                child: TextFieldInput(
+                  hintText: 'Enter your username here',
+                  textInputType: TextInputType.text,
+                  textEditingController: _usernamecontroller,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Align(
                 alignment: Alignment.centerLeft,
@@ -62,13 +92,13 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 width: 350,
                 child: TextFieldInput(
-                  hintText: 'Enter your email here',
-                  textInputType: TextInputType.emailAddress,
                   textEditingController: _emailcontroller,
+                  hintText: 'Type Your Email here',
+                  textInputType: TextInputType.emailAddress,
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Align(
                 alignment: Alignment.centerLeft,
@@ -93,6 +123,9 @@ class _LoginPageState extends State<LoginPage> {
                   isPass: true,
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: ElevatedButton(
@@ -114,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   child: const Text(
-                    'Login',
+                    'Sign up',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
@@ -124,32 +157,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Don\'t have a account?',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontFamily: 'Caveat',
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const Text(
-                      'Sign up',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Caveat',
-                      ),
-                    ),
-                  )
-                ],
-              )
             ],
           ),
         ),
