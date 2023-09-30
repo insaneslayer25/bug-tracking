@@ -5,6 +5,7 @@ const message = [
     'Time': '2023-09-12 09:02:53',
     'Status': 'closed',
     'Snapshot': 'assets/images/message_error.jpg',
+    'Priority': 'P1',
   },
   {
     'Title': 'Payment not showing',
@@ -12,6 +13,7 @@ const message = [
     'Time': '2023-08-19 11:35:45',
     'Status': 'open',
     'Snapshot': 'assets/images/payment_error.jpg',
+    'Priority': 'P2',
   },
   {
     'Title': 'Login button not working',
@@ -19,6 +21,7 @@ const message = [
     'Time': '2023-04-20 09:47:09',
     'Status': 'closed',
     'Snapshot': '/assets/image1.png',
+    'Priority': 'P3',
   },
   {
     'Title': 'Database error',
@@ -26,5 +29,6 @@ const message = [
     'Time': '2022-12-12 12:12:12',
     'Status': 'open',
     'Snapshot': '/assets/image1.png',
+    'Priority': 'P4',
   },
 ];

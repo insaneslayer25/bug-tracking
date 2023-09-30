@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 4,
+        // backgroundColor: const Color.fromARGB(255, 0, 208, 255),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.menu),
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text(
           'PayIt',
           style: TextStyle(
-            color: Pallete.blackColor,
+            color: Colors.black,
           ),
         ),
         actions: [
@@ -72,15 +73,14 @@ class _HomePageState extends State<HomePage> {
                   final currentDescription =
                       currentMessage['Description'] as String;
                   final currentImagePath = currentMessage['Snapshot'] as String;
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 2, 4, 3),
-                    child: BugTile(
-                      time: currentTime,
-                      title: currentTitle,
-                      status: currentStatus,
-                      description: currentDescription,
-                      imagePath: currentImagePath,
-                    ),
+                  final currentPriority = currentMessage['Priority'] as String;
+                  return BugTile(
+                    time: currentTime,
+                    title: currentTitle,
+                    status: currentStatus,
+                    description: currentDescription,
+                    imagePath: currentImagePath,
+                    priority: currentPriority,
                   );
                 },
               ),
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 148, 86, 255),
+        backgroundColor: Colors.lightBlueAccent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

@@ -13,17 +13,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'BugT',
-      theme: Pallete.lightModeAppTheme.copyWith(
+      theme: ThemeData.light().copyWith(
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
         textTheme: const TextTheme(
           titleMedium: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            color: Pallete.blackColor,
+            color: Colors.black,
           ),
           bodyMedium: TextStyle(
             fontSize: 20,
-            color: Pallete.blackColor,
+            color: Colors.black,
           ),
         ),
       ),

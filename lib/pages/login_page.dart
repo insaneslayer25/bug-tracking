@@ -1,7 +1,4 @@
-import 'package:bug_tracking/pages/home_page.dart';
-import 'package:flutter/material.dart';
-import 'package:bug_tracking/core/constants.dart';
-import 'package:bug_tracking/core/theme/pallete.dart';
+import 'package:bug_tracking/app_lib.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -51,7 +48,7 @@ class LoginPage extends StatelessWidget {
                   }));
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Pallete.blueColor,
+                    backgroundColor: Colors.blue.shade300,
                     minimumSize: const Size(
                       double.infinity,
                       50,
@@ -64,7 +61,7 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Pallete.blackColor,
+                    color: Colors.black,
                   ),
                 ),
               ),

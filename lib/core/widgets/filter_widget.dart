@@ -24,7 +24,9 @@ class _FilterWidgetState extends State<FilterWidget> {
           ),
           label: Text(
             widget.status,
-            style: const TextStyle(color: Pallete.blackColor),
+            style: const TextStyle(
+              color: Colors.black,
+            ),
           ),
         ),
       ),

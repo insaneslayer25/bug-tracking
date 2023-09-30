@@ -81,7 +81,7 @@ class _NewReportState extends State<NewReport> {
                   ),
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Pallete.blueColor,
+                      backgroundColor: Colors.blue.shade300,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40),
                       ),
@@ -93,12 +93,12 @@ class _NewReportState extends State<NewReport> {
                     onPressed: () {},
                     icon: const Icon(
                       Icons.photo,
-                      color: Pallete.blackColor,
+                      color: Colors.black,
                     ),
                     label: const Text(
                       'Add Snaps of bug here',
                       style: TextStyle(
-                        color: Pallete.blackColor,
+                        color: Colors.black,
                         fontSize: 16,
                       ),
                     ),
@@ -129,12 +129,13 @@ class _NewReportState extends State<NewReport> {
               },
               icon: const Icon(
                 Icons.send,
-                color: Pallete.blackColor,
+                color: Colors.black,
               ),
               label: const Text(
                 'Send Report',
                 style: TextStyle(
-                  color: Pallete.blackColor,
+                  color: Colors.black,
+                  fontSize: 16,
                 ),
               ),
             )

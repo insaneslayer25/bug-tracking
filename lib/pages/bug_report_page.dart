@@ -6,6 +6,7 @@ class BugReportingPage extends StatefulWidget {
   final String description;
   final String imagepath;
   final String datetime;
+  final String priority;
   const BugReportingPage({
     super.key,
     required this.datetime,
@@ -13,6 +14,7 @@ class BugReportingPage extends StatefulWidget {
     required this.status,
     required this.description,
     required this.imagepath,
+    required this.priority,
   });
 
   @override
@@ -25,8 +27,10 @@ class _BugReportingPageState extends State<BugReportingPage> {
     bool isOpen = widget.status == 'open' ? false : true;
 
     OutlineInputBorder border = OutlineInputBorder(
-      borderSide:
-          const BorderSide(color: Color.fromRGBO(225, 225, 225, 1), width: 4),
+      borderSide: const BorderSide(
+        color: Color.fromRGBO(225, 225, 225, 1),
+        width: 4,
+      ),
       borderRadius: BorderRadius.circular(20),
     );
 
@@ -61,21 +65,41 @@ class _BugReportingPageState extends State<BugReportingPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Card(
-                      color: const Color.fromARGB(255, 100, 165, 255),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Text(
-                          'Reported on ${widget.datetime}',
-                          style: const TextStyle(
-                              color: Pallete.blackColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
+                    Row(
+                      children: [
+                        Card(
+                          color: const Color.fromARGB(255, 100, 165, 255),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              'Reported on ${widget.datetime}',
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
-                      ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                              color: Colors.red,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Text(
+                              widget.priority,
+                              style: const TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(
                       height: 10,
@@ -94,7 +118,7 @@ class _BugReportingPageState extends State<BugReportingPage> {
                       widget.description,
                       style: const TextStyle(
                         fontSize: 18,
-                        color: Pallete.blackColor,
+                        color: Colors.black,
                       ),
                     ),
                     const SizedBox(
