@@ -10,27 +10,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'BugT',
-      theme: ThemeData.light().copyWith(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
-        ),
-        textTheme: const TextTheme(
-          titleMedium: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+    return ChangeNotifierProvider(
+      create: (context) => ReportProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'BugT',
+        theme: ThemeData.light().copyWith(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
           ),
-          bodyMedium: TextStyle(
-            fontSize: 20,
-            color: Colors.black,
+          textTheme: const TextTheme(
+            titleMedium: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            bodyMedium: TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+            ),
           ),
         ),
+        home: const LoginPage(),
       ),
-      home: const LoginPage(),
     );
   }
 }

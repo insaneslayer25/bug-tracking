@@ -1,5 +1,4 @@
 import 'package:bug_tracking/app_lib.dart';
-import 'package:flutter/physics.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -11,7 +10,6 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
-  final TextEditingController _biocontroller = TextEditingController();
   final TextEditingController _usernamecontroller = TextEditingController();
 
   @override
@@ -19,7 +17,6 @@ class _SignUpState extends State<SignUp> {
     super.dispose();
     _emailcontroller.dispose();
     _passwordcontroller.dispose();
-    _biocontroller.dispose();
     _usernamecontroller.dispose();
   }
 

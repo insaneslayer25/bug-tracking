@@ -67,19 +67,21 @@ class _BugReportingPageState extends State<BugReportingPage> {
                   children: [
                     Row(
                       children: [
-                        Card(
-                          color: const Color.fromARGB(255, 100, 165, 255),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              'Reported on ${widget.datetime}',
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Card(
+                            color: const Color.fromARGB(255, 100, 165, 255),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                'Reported on ${widget.datetime}',
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ),

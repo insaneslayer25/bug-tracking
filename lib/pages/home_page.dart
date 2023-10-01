@@ -1,6 +1,13 @@
 import 'package:bug_tracking/app_lib.dart';
-import 'package:bug_tracking/pages/new_report.dart';
 import 'package:intl/intl.dart';
+
+String timeAndDate(String input) {
+  String inputDateTimeStr = input;
+  DateTime inputDateTime = DateTime.parse(inputDateTimeStr);
+  DateFormat outputFormat = DateFormat("d MMMM ''yy hh:mm a");
+  String formattedDateTime = outputFormat.format(inputDateTime);
+  return formattedDateTime;
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,15 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    String timeAndDate(String input) {
-      String inputDateTimeStr = input;
-      DateTime inputDateTime = DateTime.parse(inputDateTimeStr);
-      DateFormat outputFormat = DateFormat("d MMMM ''yy hh:mm a");
-      String formattedDateTime = outputFormat.format(inputDateTime);
-
-      return formattedDateTime;
-    }
-
+    final reports = Provider.of<ReportProvider>(context).reports;
     return Scaffold(
       appBar: AppBar(
         elevation: 4,
@@ -63,9 +62,9 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: message.length,
+                itemCount: reports.length,
                 itemBuilder: (context, index) {
-                  final currentMessage = message[index];
+                  final currentMessage = reports[index];
                   final currentTime =
                       timeAndDate(currentMessage['Time'] as String);
                   final currentTitle = currentMessage['Title'] as String;
