@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bug_tracking/app_lib.dart';
 import 'package:intl/intl.dart';
 
@@ -167,7 +165,9 @@ class _NewReportState extends State<NewReport> {
                       'Snapshot': 'assets/images/message_error.jpg',
                       'Priority': priority.text,
                     });
-
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Report Succesfully Sent'),
+                    ));
                     Navigator.of(context).pop();
                   } else if (title.text.isEmpty &&
                       description.text.isEmpty &&

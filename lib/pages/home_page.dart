@@ -17,9 +17,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> filters = const [
+    'All',
+    'open',
+    'closed',
+  ];
+  late String selectedFilter;
+  @override
+  void initState() {
+    super.initState();
+    selectedFilter = filters[0];
+  }
+
+  List<Map<String, dynamic>> applyFilter(List<Map<String, dynamic>> reports) {
+    List<Map<String, dynamic>> filterreport = [];
+
+    if (selectedFilter == 'All') {
+      filterreport = reports;
+    } else if (selectedFilter == 'open') {
+      for (Map<String, dynamic> report in reports) {
+        if (report['Status'] == 'open') {
+          filterreport.add(report);
+        }
+      }
+    } else {
+      for (Map<String, dynamic> report in reports) {
+        if (report['Status'] == 'closed') {
+          filterreport.add(report);
+        }
+      }
+    }
+    return filterreport;
+  }
+
   @override
   Widget build(BuildContext context) {
     final reports = Provider.of<ReportProvider>(context).reports;
+    var reportsfinal = applyFilter(reports);
     return Scaffold(
       appBar: AppBar(
         elevation: 4,
@@ -46,25 +80,54 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(4, 10, 4, 10),
+        padding: const EdgeInsets.fromLTRB(5, 4, 2, 4),
         child: Column(
           children: [
             SizedBox(
               height: 50,
-              child: ListView(
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                children: const [
-                  FilterWidget(status: 'All'),
-                  FilterWidget(status: 'Open'),
-                  FilterWidget(status: 'Close'),
-                ],
+                itemCount: filters.length,
+                itemBuilder: (context, index) {
+                  final currentfilter = filters[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {});
+                        selectedFilter = currentfilter;
+                        reportsfinal = applyFilter(
+                            Provider.of<ReportProvider>(context, listen: false)
+                                .reports);
+                      },
+                      child: Chip(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 5),
+                        backgroundColor: currentfilter == selectedFilter
+                            ? const Color.fromARGB(255, 7, 198, 251)
+                            : const Color.fromARGB(255, 255, 255, 255),
+                        labelStyle: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                        ),
+                        side: const BorderSide(
+                          color: Color.fromRGBO(0, 0, 0, 1),
+                        ),
+                        label: Text(currentfilter),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: reports.length,
+                itemCount: reportsfinal.length,
                 itemBuilder: (context, index) {
-                  final currentMessage = reports[index];
+                  final currentMessage = reportsfinal[index];
                   final currentTime =
                       timeAndDate(currentMessage['Time'] as String);
                   final currentTitle = currentMessage['Title'] as String;

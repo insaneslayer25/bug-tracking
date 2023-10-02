@@ -36,7 +36,7 @@ class _SignUpState extends State<SignUp> {
                 height: 10,
               ),
               const Text(
-                'Dive into BugT ',
+                'Dive into BugT',
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,

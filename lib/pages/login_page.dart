@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 40,
               ),
               const Text(
-                'Dive into BugT ',
+                'BugT ',
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
